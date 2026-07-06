@@ -1,39 +1,44 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.IO;
+using PayrollManager.Models; // Ensure this matches your project's folder structure
 
-public class PayrollDbContext : DbContext
+namespace PayrollManager.Data // Marks this file as part of the Data folder
 {
-    public DbSet<Department> Departments { get; set; }
-    public DbSet<Position> Positions { get; set; }
-    public DbSet<PayrollType> PayrollTypes { get; set; }
-    public DbSet<Employee> Employees { get; set; }
-    public DbSet<FinancialTransaction> FinancialTransactions { get; set; }
-    public DbSet<PayrollCycle> PayrollCycles { get; set; }
-    public DbSet<CycleEmployee> CycleEmployees { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public class PayrollDbContext : DbContext
     {
-        // Setting up the local SQLite database path inside the mobile storage
-        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "payroll_manager.db");
-        optionsBuilder.UseSqlite($"Filename={dbPath}");
-    }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<PayrollType> PayrollTypes { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<FinancialTransaction> FinancialTransactions { get; set; }
+        public DbSet<PayrollCycle> PayrollCycles { get; set; }
+        public DbSet<CycleEmployee> CycleEmployees { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        // Configuring composite primary key for the junction table
-        modelBuilder.Entity<CycleEmployee>()
-            .HasKey(ce => new { ce.PayrollCycleId, ce.EmployeeId });
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Setting up the local SQLite database path inside the mobile storage
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "payroll_manager.db");
+            optionsBuilder.UseSqlite($"Filename={dbPath}");
+        }
 
-        // Defining relationships for CycleEmployee
-        modelBuilder.Entity<CycleEmployee>()
-            .HasOne(ce => ce.PayrollCycle)
-            .WithMany(c => c.CycleEmployees)
-            .HasForeignKey(ce => ce.PayrollCycleId);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configuring composite primary key for the junction table
+            modelBuilder.Entity<CycleEmployee>()
+                .HasKey(ce => new { ce.PayrollCycleId, ce.EmployeeId });
 
-        modelBuilder.Entity<CycleEmployee>()
-            .HasOne(ce => ce.Employee)
-            .WithMany(e => e.CycleEmployees)
-            .HasForeignKey(ce => ce.EmployeeId);
+            // Defining relationships for CycleEmployee
+            modelBuilder.Entity<CycleEmployee>()
+                .HasOne(ce => ce.PayrollCycle)
+                .WithMany(c => c.CycleEmployees)
+                .HasForeignKey(ce => ce.PayrollCycleId);
 
-        base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<CycleEmployee>()
+                .HasOne(ce => ce.Employee)
+                .WithMany(e => e.CycleEmployees)
+                .HasForeignKey(ce => ce.EmployeeId);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

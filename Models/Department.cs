@@ -1,10 +1,16 @@
 ﻿// Represents the departments within the organization
-public class Department
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+using System;
+using System.Collections.Generic;
 
-    // Navigation property for EF Core
-    public ICollection<Employee> Employees { get; set; }
+namespace PayrollManager.Models
+{
+    public class Department
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        // Navigation property for EF Core
+        public ICollection<Employee> Employees { get; set; }
+    }
 }
