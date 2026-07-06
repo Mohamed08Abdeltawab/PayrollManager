@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PayrollManager.Views.SettingsPage"
+             Title="الإعدادات"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Frame CornerRadius="10" BorderColor="#E0E0E0" BackgroundColor="White" Padding="0">
+                <VerticalStackLayout>
+
+                    <Label Text="الهيكل التنظيمي" 
+                           TextColor="#9E9E9E" 
+                           FontSize="14" 
+                           Padding="15,10" 
+                           HorizontalOptions="Start"/>
+
+                    <BoxView HeightRequest="1" Color="#E0E0E0" />
+
+                    <Grid Padding="15" ColumnDefinitions="Auto, *, Auto">
+                        <Image Source="dotnet_bot.png" WidthRequest="24" HeightRequest="24" Grid.Column="0"/>
+                        <Label Text="الأقسام" FontSize="16" TextColor="Black" VerticalOptions="Center" Grid.Column="1" Margin="10,0"/>
+                        <Image Source="dotnet_bot.png" WidthRequest="16" HeightRequest="16" Grid.Column="2" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="#F0F0F0" Margin="15,0"/>
+
+                    <Grid Padding="15" ColumnDefinitions="Auto, *, Auto">
+                        <Image Source="dotnet_bot.png" WidthRequest="24" HeightRequest="24" Grid.Column="0"/>
+                        <Label Text="المناصب" FontSize="16" TextColor="Black" VerticalOptions="Center" Grid.Column="1" Margin="10,0"/>
+                        <Image Source="dotnet_bot.png" WidthRequest="16" HeightRequest="16" Grid.Column="2" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="#F0F0F0" Margin="15,0"/>
+
+                    <Grid Padding="15" ColumnDefinitions="Auto, *, Auto">
+                        <Image Source="dotnet_bot.png" WidthRequest="24" HeightRequest="24" Grid.Column="0"/>
+                        <Label Text="كشوف الرواتب" FontSize="16" TextColor="Black" VerticalOptions="Center" Grid.Column="1" Margin="10,0"/>
+                        <Image Source="dotnet_bot.png" WidthRequest="16" HeightRequest="16" Grid.Column="2" HorizontalOptions="End"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

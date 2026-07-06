@@ -8,8 +8,11 @@ public partial class App : Application
     {
         InitializeComponent();
 
+        // Force Light Mode execution immediately on startup
+        Application.Current.UserAppTheme = AppTheme.Light;
+
         // Automatically create the database and tables on mobile storage if they don't exist
-        using (var context = new PayrollDbContext())
+        using (var context = new PayrollManager.Data.PayrollDbContext())
         {
             context.Database.EnsureCreated();
         }

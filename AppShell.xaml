@@ -2,14 +2,62 @@
 <Shell
     x:Class="PayrollManager.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:PayrollManager"
-    Shell.FlyoutBehavior="Disabled"
-    Title="PayrollManager">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="clr-namespace:PayrollManager.Views"
+    Shell.FlyoutBehavior="Flyout"
+    FlowDirection="RightToLeft"
+    FlyoutWidth="300"
+    Title="Payroll Manager">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout BackgroundColor="#F3EFFF" Padding="20,40,20,20" Spacing="10" HorizontalOptions="FillAndExpand">
+            <Border WidthRequest="80" HeightRequest="80" StrokeShape="RoundRectangle 40" BackgroundColor="#8A72D6" HorizontalOptions="Center">
+                <Label Text="👤" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Border>
+
+            <Label Text="Mohamed A_Eltawab" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
+            <Label Text="mohamedzidan0999@gmail.com" FontSize="14" TextColor="Gray" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid Padding="20,15" ColumnDefinitions="*, Auto">
+                <Label Grid.Column="0" Text="{Binding Text}" FontSize="16" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Image Grid.Column="1" Source="{Binding IconImageSource}" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Margin="0,0,15,0"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid Padding="20,15" ColumnDefinitions="*, Auto">
+                <Label Grid.Column="0" Text="{Binding Title}" FontSize="16" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Margin="0,0,15,0"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+
+    <TabBar>
+        <Tab Title="كشوف الرواتب" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PayrollCyclesPage}" />
+        </Tab>
+
+        <Tab Title="الموظفين" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:EmployeesPage}" />
+        </Tab>
+
+        <Tab Title="المعاملات" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:TransactionsPage}" />
+        </Tab>
+
+        <Tab Title="نوع كشف الراتب" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PayrollTypePage}" />
+        </Tab>
+    </TabBar>
+
+    
+    <MenuItem Text="الإعدادات" IconImageSource="dotnet_bot.png" Clicked="OnSettingsClicked" />
 
 </Shell>
