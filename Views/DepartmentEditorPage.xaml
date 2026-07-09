@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PayrollManager.Views.DepartmentEditorPage"
+             x:Name="thisPage"
+             Title="{Binding PageTitle}"
+             BackgroundColor="#F8F9FA"
+             Shell.TabBarIsVisible="False">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*, Auto" FlowDirection="RightToLeft" Padding="15,0">
+            <Label Text="{Binding Source={x:Reference thisPage}, Path=Title}" 
+                   FontSize="18" FontAttributes="Bold" TextColor="Black" 
+                   VerticalOptions="Center" Grid.Column="0"/>
+            <ImageButton Source="dotnet_bot.png" WidthRequest="24" HeightRequest="24" 
+                         Clicked="OnSaveClicked" Grid.Column="1" VerticalOptions="Center"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="*, Auto" Padding="20">
+
+        <ScrollView Grid.Row="0">
+            <Frame CornerRadius="12" BorderColor="#E0E0E0" BackgroundColor="White" Padding="20" Margin="0,10,0,0">
+                <VerticalStackLayout Spacing="25" FlowDirection="RightToLeft">
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="القسم" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="NameEntry" Text="{Binding DepartmentName}" 
+                               FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="الوصف" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="DescriptionEntry" Text="{Binding DepartmentDescription}" 
+                               FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+        </ScrollView>
+        <Button Grid.Row="1" Text="حفظ القسم" BackgroundColor="#8A72D6" TextColor="White" CornerRadius="8" HeightRequest="45" Margin="0,0,0,10" Clicked="OnSaveClicked"/>
+        <Button x:Name="DeleteButton" 
+                Grid.Row="1" 
+                Text="حذف القسم" 
+                BackgroundColor="#FF3B30" 
+                TextColor="White" 
+                CornerRadius="8" 
+                HeightRequest="45" 
+                Margin="0,0,0,10"
+                Clicked="OnDeleteClicked"
+                IsVisible="False"/>
+    </Grid>
+</ContentPage>

@@ -9,6 +9,11 @@
             Application.Current.UserAppTheme = AppTheme.Light;
             Routing.RegisterRoute(nameof(Views.SettingsPage), typeof(Views.SettingsPage));
             Routing.RegisterRoute(nameof(Views.DepartmentsPage), typeof(Views.DepartmentsPage));
+            Routing.RegisterRoute(nameof(Views.DepartmentEditorPage), typeof(Views.DepartmentEditorPage));
+            Routing.RegisterRoute(nameof(Views.PositionsPage), typeof(Views.PositionsPage));
+            Routing.RegisterRoute(nameof(Views.PositionEditorPage), typeof(Views.PositionEditorPage));
+            Routing.RegisterRoute(nameof(Views.PayrollTypesSetupPage), typeof(Views.PayrollTypesSetupPage));
+            Routing.RegisterRoute(nameof(Views.PayrollTypeEditorPage), typeof(Views.PayrollTypeEditorPage));
         }
         private async void OnSettingsClicked(object sender, EventArgs e)
         {

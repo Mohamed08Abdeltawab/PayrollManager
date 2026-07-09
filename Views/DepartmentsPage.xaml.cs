@@ -7,13 +7,17 @@ public partial class DepartmentsPage : ContentPage
         InitializeComponent();
     }
 
-    private void OnAddDepartmentTapped(object sender, EventArgs e)
+    private async void OnAddDepartmentTapped(object sender, EventArgs e)
     {
-        // Handled in next step for creating new records
+        // Passing id = 0 to denote insert mode
+        await Shell.Current.GoToAsync($"{nameof(DepartmentEditorPage)}?id=0");
     }
 
-    private void OnEditTapped(object sender, EventArgs e)
+    private async void OnEditTapped(object sender, EventArgs e)
     {
-        // Handled in next step for modifying records
+        // For now passing a static id or bound entity item id
+        // In production we will bind it to the clicked list item id dynamically
+        int selectedId = 1; // Change based on dynamic clicked row context later
+        await Shell.Current.GoToAsync($"{nameof(DepartmentEditorPage)}?id={selectedId}");
     }
 }
