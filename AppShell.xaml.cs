@@ -8,6 +8,7 @@
             // Force the app to always run in Light Mode, regardless of system settings
             Application.Current.UserAppTheme = AppTheme.Light;
             Routing.RegisterRoute(nameof(Views.SettingsPage), typeof(Views.SettingsPage));
+            Routing.RegisterRoute(nameof(Views.DepartmentsPage), typeof(Views.DepartmentsPage));
         }
         private async void OnSettingsClicked(object sender, EventArgs e)
         {
