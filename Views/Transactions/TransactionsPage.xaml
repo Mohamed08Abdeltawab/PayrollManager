@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PayrollManager.Views.TransactionsPage"
+             Title="المعاملات"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+
+            <!-- Revenues Card -->
+            <Frame CornerRadius="12" BorderColor="#E0E0E0" BackgroundColor="White" Padding="15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRevenuesTapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto, *, Auto">
+                    <Label Text="&lt;" FontSize="20" TextColor="#9E9E9E" Grid.Column="0" VerticalOptions="Center"/>
+                    <Label Text="الإيرادات" FontSize="18" TextColor="Black" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,15,0"/>
+                    <Label Text="💵" FontSize="24" Grid.Column="2" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <!-- Deductions Card -->
+            <Frame CornerRadius="12" BorderColor="#E0E0E0" BackgroundColor="White" Padding="15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDeductionsTapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto, *, Auto">
+                    <Label Text="&lt;" FontSize="20" TextColor="#9E9E9E" Grid.Column="0" VerticalOptions="Center"/>
+                    <Label Text="الخصومات" FontSize="18" TextColor="Black" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,15,0"/>
+                    <Label Text="💸" FontSize="24" Grid.Column="2" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <!-- Taxes Card -->
+            <Frame CornerRadius="12" BorderColor="#E0E0E0" BackgroundColor="White" Padding="15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTaxesTapped" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto, *, Auto">
+                    <Label Text="&lt;" FontSize="20" TextColor="#9E9E9E" Grid.Column="0" VerticalOptions="Center"/>
+                    <Label Text="الضرائب" FontSize="18" TextColor="Black" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,15,0"/>
+                    <Label Text="🏛️" FontSize="24" Grid.Column="2" VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

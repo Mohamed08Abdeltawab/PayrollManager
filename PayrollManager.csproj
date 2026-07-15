@@ -56,10 +56,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiXaml Update="Views\DepartmentEditorPage.xaml">
+		<MauiXaml Update="Views\Settings\DepartmentEditorPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\DepartmentsPage.xaml">
+		<MauiXaml Update="Views\Settings\DepartmentsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\EmployeesPage.xaml">
@@ -68,25 +68,31 @@
 		<MauiXaml Update="Views\PayrollCyclesPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\PayrollTypeEditorPage.xaml">
+		<MauiXaml Update="Views\Settings\PayrollTypeEditorPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Views\PayrollTypePage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\PayrollTypesSetupPage.xaml">
+		<MauiXaml Update="Views\Settings\PayrollTypesSetupPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\PositionEditorPage.xaml">
+		<MauiXaml Update="Views\Settings\PositionEditorPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\PositionsPage.xaml">
+		<MauiXaml Update="Views\Settings\PositionsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\SettingsPage.xaml">
+		<MauiXaml Update="Views\Settings\SettingsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\TransactionsPage.xaml">
+		<MauiXaml Update="Views\Transactions\RevenueEditorPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Transactions\RevenuesPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Transactions\TransactionsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 	</ItemGroup>

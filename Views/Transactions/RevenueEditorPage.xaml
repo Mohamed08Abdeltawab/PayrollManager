@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PayrollManager.Views.RevenueEditorPage"
+             Title="تعديل الإيراد"
+             BackgroundColor="#F8F9FA">
+
+    <!-- Navigation Bar Action Items -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="حذف" IconImageSource="dotnet_bot.png" Order="Primary" Clicked="OnDeleteClicked" />
+        <ToolbarItem Text="حفظ" IconImageSource="dotnet_bot.png" Order="Primary" Clicked="OnSaveClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Padding="20">
+        <Frame CornerRadius="12" BorderColor="#E0E0E0" BackgroundColor="White" Padding="20">
+            <VerticalStackLayout Spacing="20" FlowDirection="RightToLeft">
+
+                <!-- 1. Revenue Name Input -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="الإيرادات" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                    <Entry x:Name="NameEntry" Text="توصيل" FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                    <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                </VerticalStackLayout>
+
+                <!-- 2. Description Input -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="الوصف" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                    <Entry x:Name="DescriptionEntry" Text="ال" FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                    <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                </VerticalStackLayout>
+
+                <!-- 3. Calculation Type Selector (Picker) -->
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="نوع الحساب" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                    <Picker x:Name="CalculationTypePicker" FontSize="16" TextColor="Black" Title="اختر نوع الحساب"
+                            SelectedIndexChanged="OnCalculationTypeChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>مبلغ ثابت</x:String>
+                                <x:String>الكمية حسب السعر</x:String>
+                                <x:String>نسبة مئوية من الراتب</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                </VerticalStackLayout>
+
+                <!-- 4. Header: Default Values Section -->
+                <Label Text="القيم الافتراضية" FontAttributes="Bold" FontSize="16" TextColor="Black" Margin="0,10,0,0" HorizontalOptions="Start"/>
+
+                <!-- Dynamic Container 1: Fixed Amount View (الصورة الأولى) -->
+                <VerticalStackLayout x:Name="FixedAmountContainer" Spacing="15" IsVisible="False">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="المبلغ" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="FixedAmountEntry" Text="20.0" Keyboard="Numeric" FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Dynamic Container 2: Quantity * Price View (الصورة الثانية) -->
+                <VerticalStackLayout x:Name="QuantityPriceContainer" Spacing="15" IsVisible="False">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="السعر" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="PriceEntry" Text="0.0" Keyboard="Numeric" FontSize="16" TextColor="Black" BackgroundColor="Transparent" TextChanged="OnPriceOrQuantityChanged"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="الكمية" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="QuantityEntry" Text="0.0" Keyboard="Numeric" FontSize="16" TextColor="Black" BackgroundColor="Transparent" TextChanged="OnPriceOrQuantityChanged"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="المبلغ" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="TotalAmountEntry" Text="0.0" IsReadOnly="True" Keyboard="Numeric" FontSize="16" TextColor="#7F8C8D" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+                <!-- Dynamic Container 3: Percentage of Salary View (الصورة الثالثة) -->
+                <VerticalStackLayout x:Name="PercentageContainer" Spacing="15" IsVisible="False">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="نسبة مئوية من الراتب (%)" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="PercentageEntry" Text="0.0" Keyboard="Numeric" FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="الكمية" TextColor="#9E9E9E" FontSize="14" HorizontalOptions="Start"/>
+                        <Entry x:Name="PercentageQuantityEntry" Text="0.0" Keyboard="Numeric" FontSize="16" TextColor="Black" BackgroundColor="Transparent"/>
+                        <BoxView HeightRequest="1" Color="#9E9E9E"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>
